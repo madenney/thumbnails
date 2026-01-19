@@ -18,7 +18,7 @@ from _shared import (
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Generate a Lunar Melee channel thumbnail using video_tools.",
+        description="Generate a channel thumbnail using video_tools.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("--title", required=True, help="Main title text")

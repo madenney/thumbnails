@@ -1,28 +1,54 @@
 # Thumbnails
 
-YouTube thumbnail generator that wraps the `video_tools` thumbnail script.
+Toolkit for generating Smash Melee set thumbnails.
 
 ## Setup
-- Set `VIDEO_TOOLS_THUMBNAIL_PATH` in `.env` to the `video_tools/thumbnail.py` path.
-- Run `scripts/check_env.sh` to warn if the path is missing.
+- Python 3 and Pillow: `pip install pillow`
+- Set `VIDEO_TOOLS_THUMBNAIL_PATH` in `.env` if you want to use `video_tools`.
+- Check the env with `python3 scripts/check_env.sh` or `python3 index.py check_env`.
 
-## Usage
-- `python index.py check_env` validates `VIDEO_TOOLS_THUMBNAIL_PATH`.
-- `python index.py set_thumbnail --player1 "P1" --player2 "P2" --p1-character "Fox" --p2-character "Marth" --round "Winners Quarters"`
-- `python index.py lunar_thumbnail --title "Lunar Melee" --subtitle "Highlights"`
-- `python index.py event_thumbnail --event "Event Name" --tagline "Top 8"`
+## Repo hygiene
+- `.env` is ignored; keep secrets out of git.
+- `output/` and `tmp/` are ignored; they are generated artifacts.
 
-## Set Thumbnail Config
-- `configs/main.json` selects the active event (`current_event`) and points at event configs.
-- Event configs (for example `configs/events/jungle.json`) control event title/number/VS text, positions, sizes, colors, font paths, and character overrides; `--round` overrides the round title text.
-- Install a font zip and update config font paths with `python scripts/install_title_font.py <zip> --config configs/events/jungle.json --targets event_title,event_number,round_title,vs_logo`.
+## Quick start (single image)
+1. Pick the active event in `configs/main.json`.
+2. Edit the event config in `configs/events/<event>.json`.
+3. Edit `configs/quick_set_thumbnail.json` (player names, characters, colors, round).
+4. Run `python3 scripts/quick_set_thumbnail.py`.
 
-Each generator:
-- `set_thumbnail` uses `assets/test6.jpg` as the default base image.
-- `lunar_thumbnail` and `event_thumbnail` call `video_tools/thumbnail -e` unless `--skip-export` is provided.
-- Writes the generated thumbnail PNG for `set_thumbnail` to `output/set_thumbnail/` and removes intermediate files.
-- `lunar_thumbnail` and `event_thumbnail` write metadata JSON files to `output/<command>/`.
+## Batch tests
+Edit `scripts/test_sets.json`, then run:
+`python3 scripts/test_set_thumbnail_generator.py`
 
-Character assets:
-- Default set is `assets/melee/characters/vs_screen` for `set_thumbnail`.
-- Use `--character-set portraits` or `--character-set stock_icons` to switch.
+Behavior:
+- Generates two images per character (anchor on left, then anchor on right).
+- Uses `anchor_character` from the JSON (defaults to Fox).
+- Uses `rounds` for the round title.
+- Use `--limit N` to cap output count.
+- Outputs to `output/set_thumbnail_test_N/`.
+
+## Event config (configs/events/<id>.json)
+Common fields:
+- `base_image`: background image path.
+- `text`: blocks for `event_title`, `event_number`, `round_title`, `vs_logo`, `player_names`.
+- `character_overrides`: per-character `left`/`right` overrides for `scale`, `offset_x`, `offset_y`.
+- `character_outline`: `enabled`, `size`, `color` for an outline around character art.
+
+Text blocks:
+- `enabled`, `text`, `font_path`, `max_size`, `min_size`, `max_width`, `x`, `y`, `fill`,
+  `stroke_fill`, `stroke_width`.
+- `event_title.segments` supports `size_scale` and optional `x_adjust` per segment.
+- `{event_number}` inside segments is replaced with the last `#...` token from the title text.
+- `player_names` uses symmetric placement with `x_padding`, `center_gap`, and `y`.
+
+## Font install
+Install a font zip and update config font paths:
+`python3 scripts/install_title_font.py <zip> --config configs/events/<event>.json`
+
+Limit updates to specific blocks:
+`--targets event_title,event_number,round_title,vs_logo,player_names`
+
+## Other commands
+- `python3 scripts/set_thumbnail.py ...` (direct CLI; still uses `configs/main.json`)
+- `python3 index.py set_thumbnail ...`

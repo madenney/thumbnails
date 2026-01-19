@@ -18,7 +18,7 @@ REQUIRED_KEYS = {
     "p1_character",
     "p2_character",
 }
-KOTJ_TITLE = "King of the Jungle #54"
+DEFAULT_EVENT_TITLE = "Event Title #54"
 DEFAULT_MAIN_CONFIG = "configs/main.json"
 DEFAULT_ANCHOR_CHARACTER = "Fox"
 
@@ -358,7 +358,7 @@ def main() -> int:
         return 1
 
     try:
-        update_event_text(event_config_path, KOTJ_TITLE)
+        update_event_text(event_config_path, DEFAULT_EVENT_TITLE)
     except RuntimeError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
