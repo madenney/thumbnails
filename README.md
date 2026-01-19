@@ -7,10 +7,6 @@ Toolkit for generating Smash Melee set thumbnails.
 - Set `VIDEO_TOOLS_THUMBNAIL_PATH` in `.env` if you want to use `video_tools`.
 - Check the env with `python3 scripts/check_env.sh` or `python3 index.py check_env`.
 
-## Repo hygiene
-- `.env` is ignored; keep secrets out of git.
-- `output/` and `tmp/` are ignored; they are generated artifacts.
-
 ## Quick start (single image)
 1. Pick the active event in `configs/main.json`.
 2. Edit the event config in `configs/events/<event>.json`.
