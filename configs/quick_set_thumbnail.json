@@ -1,0 +1,13 @@
+{
+  "player1": "Zion",
+  "player2": "Mango",
+  "p1_character": "Fox",
+  "p2_character": "Captain Falcon",
+  "p1_color": "Default",
+  "p2_color": "Default",
+  "round": "Losers Round 2",
+  "output_dir": "output/set_thumbnail",
+  "slug": "jungle_quick",
+  "character_set": "vs_screen",
+  "character_dir": "assets/melee/characters"
+}

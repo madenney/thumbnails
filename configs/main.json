@@ -1,0 +1,10 @@
+{
+  "current_event": "jungle",
+  "events": [
+    {
+      "id": "jungle",
+      "label": "King of the Jungle",
+      "config_path": "configs/events/jungle.json"
+    }
+  ]
+}

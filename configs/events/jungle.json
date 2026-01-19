@@ -1,0 +1,345 @@
+{
+  "id": "jungle",
+  "name": "King of the Jungle",
+  "base_image": "assets/test7.jpg",
+  "text": {
+    "event_title": {
+      "enabled": true,
+      "text": "King of the Jungle #54",
+      "segments": [
+        {
+          "text": "K",
+          "size_scale": 1.6
+        },
+        {
+          "text": "ing ",
+          "size_scale": 1.0
+        },
+        {
+          "text": "of the ",
+          "size_scale": 0.75
+        },
+        {
+          "text": "J",
+          "size_scale": 1.6,
+          "x_adjust": -40
+        },
+        {
+          "text": "ungle ",
+          "size_scale": 1.0
+        },
+        {
+          "text": "{event_number}",
+          "size_scale": 1.66
+        }
+      ],
+      "font_path": "assets/fonts/title_font.otf",
+      "max_size": 175,
+      "min_size": 24,
+      "max_width": 1800,
+      "max_lines": 1,
+      "x": 960,
+      "y": 1050,
+      "align": "center",
+      "anchor": "bottom",
+      "fill": "green",
+      "stroke_fill": "black",
+      "stroke_width": 15,
+      "line_spacing": 10
+    },
+    "event_number": {
+      "enabled": false,
+      "text": "#54",
+      "font_path": "assets/fonts/title_font.otf",
+      "max_size": 120,
+      "min_size": 36,
+      "max_width": 1660,
+      "max_lines": 1,
+      "x": 960,
+      "align": "center",
+      "anchor": "top",
+      "fill": "white",
+      "stroke_fill": "black",
+      "stroke_width": 8,
+      "line_spacing": 10,
+      "stack": true,
+      "stack_gap": 10
+    },
+    "round_title": {
+      "enabled": true,
+      "text": "Round 1",
+      "font_path": "assets/fonts/title_font.otf",
+      "max_size": 80,
+      "min_size": 32,
+      "max_width": 1660,
+      "max_lines": 2,
+      "x": 960,
+      "y": 680,
+      "align": "center",
+      "anchor": "top",
+      "fill": "white",
+      "stroke_fill": "black",
+      "stroke_width": 9,
+      "line_spacing": 10
+    },
+    "vs_logo": {
+      "enabled": true,
+      "text": "VS",
+      "font_path": "assets/fonts/title_font.otf",
+      "max_size": 280,
+      "min_size": 80,
+      "max_width": 400,
+      "max_lines": 1,
+      "x": 960,
+      "y": 400,
+      "align": "center",
+      "anchor": "center",
+      "fill": "#d60000",
+      "stroke_fill": "black",
+      "stroke_width": 15,
+      "line_spacing": 0
+    },
+    "player_names": {
+      "enabled": true,
+      "font_path": "assets/fonts/title_font.otf",
+      "max_size": 210,
+      "min_size": 28,
+      "max_width": 0,
+      "max_lines": 1,
+      "x_padding": 150,
+      "y": 30,
+      "center_gap": 100,
+      "align": "center",
+      "fill": "green",
+      "stroke_fill": "black",
+      "stroke_width": 15,
+      "line_spacing": 10
+    }
+  },
+  "character_outline": {
+    "enabled": true,
+    "size": 2,
+    "color": "black"
+  },
+  "character_overrides": {
+    "defaults": {
+      "scale": 0.8,
+      "offset_x": -50,
+      "offset_y": -140
+    },
+    "characters": {
+      "Bowser": {
+        "left": {},
+        "right": {
+          "scale": 1,
+          "offset_x": -50,
+          "offset_y": -120
+        }
+      },
+      "Captain Falcon": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Donkey Kong": {
+        "left": {},
+        "right": {
+          "scale": 1,
+          "offset_x": 10,
+          "offset_y": -120
+        }
+      },
+      "Dr Mario": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Falco": {
+        "left": {},
+        "right": {
+          "scale": 1.0,
+          "offset_x": 0,
+          "offset_y": 0
+        }
+      },
+      "Fox": {
+        "left": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        },
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Ganondorf": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Ice Climbers": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Jigglypuff": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Kirby": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Link": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Luigi": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Mario": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Marth": {
+        "left": {},
+        "right": {
+          "scale": 0.85,
+          "offset_x": 70,
+          "offset_y": -170
+        }
+      },
+      "Mewtwo": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Mr Game & Watch": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Ness": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Peach": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Pichu": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Pikachu": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Roy": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Samus": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Sheik": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Yoshi": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Young Link": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      },
+      "Zelda": {
+        "left": {},
+        "right": {
+          "scale": 0.8,
+          "offset_x": -50,
+          "offset_y": -140
+        }
+      }
+    }
+  }
+}
