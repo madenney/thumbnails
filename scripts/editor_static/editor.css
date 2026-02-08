@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1a1a1a;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: #222;
+  border-bottom: 1px solid #333;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#page-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.muted {
+  color: #888;
+  font-size: 13px;
+}
+
+.dirty {
+  background: #c44;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.header-right {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  padding: 6px 16px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #333;
+  color: #e0e0e0;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #444;
+}
+
+#btn-save {
+  background: #2a6e2a;
+  border-color: #3a8e3a;
+}
+
+#btn-save:hover {
+  background: #3a8e3a;
+}
+
+.help-bar {
+  padding: 4px 16px;
+  background: #1e1e1e;
+  border-bottom: 1px solid #333;
+  font-size: 12px;
+  color: #888;
+}
+
+kbd {
+  background: #333;
+  border: 1px solid #555;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+#main-area {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+#preview-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+}
+
+#sidebar {
+  width: 180px;
+  background: #222;
+  border-left: 1px solid #333;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.toggle-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.toggle-hint {
+  font-size: 11px;
+  color: #666;
+  padding-left: 24px;
+}
+
+#preview-container:active {
+  cursor: grabbing;
+}
+
+#preview {
+  max-width: 100%;
+  max-height: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+#loading-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 8px 16px;
+  background: #222;
+  border-top: 1px solid #333;
+  font-size: 14px;
+}
+
+.value strong {
+  color: #6cf;
+  font-variant-numeric: tabular-nums;
+}

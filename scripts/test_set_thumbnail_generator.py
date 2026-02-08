@@ -211,47 +211,37 @@ def build_random_sets(
     config: dict,
 ) -> tuple[list[dict], dict]:
     rounds = config.get("rounds") or []
+    players = config.get("players") or []
+    count = int(config.get("count", 20))
 
     if not rounds:
         raise RuntimeError("random test config missing rounds")
+    if not players:
+        raise RuntimeError("random test config missing players")
 
     characters, color_map, character_set, character_dir = load_character_pool(
         root, config
     )
 
-    anchor_value = config.get("anchor_character", DEFAULT_ANCHOR_CHARACTER)
-    anchor_character = resolve_character_name(characters, anchor_value)
-    if anchor_character is None:
-        raise RuntimeError(
-            f"anchor character '{anchor_value}' not found in character pool"
-        )
-
     sets: list[dict] = []
-    for character in characters:
-        anchor_slug = slugify(anchor_character)
-        character_slug = slugify(character)
+    for i in range(count):
+        p1_tag, p2_tag = choose_two(players)
+        p1_char = random.choice(characters)
+        p2_char = random.choice(characters)
+        p1_color = random.choice(color_map[p1_char])
+        p2_color = random.choice(color_map[p2_char])
+        round_title = random.choice(rounds)
+        slug = f"{i+1:02d}_{slugify(p1_tag)}_vs_{slugify(p2_tag)}"
         sets.append(
             {
-                "round": random.choice(rounds),
-                "player1": anchor_character,
-                "player2": character,
-                "p1_character": anchor_character,
-                "p2_character": character,
-                "p1_color": random.choice(color_map[anchor_character]),
-                "p2_color": random.choice(color_map[character]),
-                "slug": f"left_{anchor_slug}_right_{character_slug}",
-            }
-        )
-        sets.append(
-            {
-                "round": random.choice(rounds),
-                "player1": character,
-                "player2": anchor_character,
-                "p1_character": character,
-                "p2_character": anchor_character,
-                "p1_color": random.choice(color_map[character]),
-                "p2_color": random.choice(color_map[anchor_character]),
-                "slug": f"right_{anchor_slug}_left_{character_slug}",
+                "round": round_title,
+                "player1": p1_tag,
+                "player2": p2_tag,
+                "p1_character": p1_char,
+                "p2_character": p2_char,
+                "p1_color": p1_color,
+                "p2_color": p2_color,
+                "slug": slug,
             }
         )
 

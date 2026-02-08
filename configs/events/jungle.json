@@ -5,7 +5,7 @@
   "text": {
     "event_title": {
       "enabled": true,
-      "text": "King of the Jungle #54",
+      "text": "Event Title #54",
       "segments": [
         {
           "text": "K",
@@ -124,220 +124,322 @@
   "character_overrides": {
     "defaults": {
       "scale": 0.8,
-      "offset_x": -50,
-      "offset_y": -140
+      "offset_x": 0,
+      "raise": 155
     },
     "characters": {
       "Bowser": {
-        "left": {},
+        "left": {
+          "offset_x": -11,
+          "scale": 0.87,
+          "raise": 159
+        },
         "right": {
-          "scale": 1,
-          "offset_x": -50,
-          "offset_y": -120
+          "scale": 0.9,
+          "offset_x": -110,
+          "raise": 170
         }
       },
       "Captain Falcon": {
-        "left": {},
+        "left": {
+          "offset_x": 54,
+          "scale": 0.8,
+          "raise": 172
+        },
         "right": {
           "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "offset_x": -89,
+          "raise": 158,
+          "use_other_side": true,
+          "mirror": true
         }
       },
       "Donkey Kong": {
-        "left": {},
+        "left": {
+          "offset_x": -5,
+          "scale": 0.99,
+          "raise": 101
+        },
         "right": {
-          "scale": 1,
-          "offset_x": 10,
-          "offset_y": -120
+          "scale": 0.92,
+          "offset_x": -24,
+          "raise": 141
         }
       },
       "Dr Mario": {
-        "left": {},
+        "left": {
+          "offset_x": 158,
+          "scale": 0.69,
+          "raise": 172
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.69,
+          "offset_x": -147,
+          "raise": 201
         }
       },
       "Falco": {
-        "left": {},
+        "left": {
+          "offset_x": 64,
+          "scale": 0.72,
+          "raise": 189
+        },
         "right": {
-          "scale": 1.0,
-          "offset_x": 0,
-          "offset_y": 0
+          "scale": 0.72,
+          "offset_x": -74,
+          "raise": 177
         }
       },
       "Fox": {
         "left": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.69,
+          "offset_x": 80,
+          "raise": 175
         },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.72,
+          "offset_x": -204,
+          "raise": 176
         }
       },
       "Ganondorf": {
-        "left": {},
+        "left": {
+          "offset_x": -37,
+          "scale": 0.93,
+          "raise": 127
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.99,
+          "offset_x": -13,
+          "raise": 86
         }
       },
       "Ice Climbers": {
-        "left": {},
+        "left": {
+          "offset_x": 46,
+          "scale": 0.69,
+          "raise": 181
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.79,
+          "offset_x": -36,
+          "raise": 159
         }
       },
       "Jigglypuff": {
-        "left": {},
+        "left": {
+          "offset_x": 130,
+          "scale": 0.59,
+          "raise": 211
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.58,
+          "offset_x": -151,
+          "raise": 192
         }
       },
       "Kirby": {
-        "left": {},
+        "left": {
+          "offset_x": 124,
+          "scale": 0.61,
+          "raise": 209
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.57,
+          "offset_x": -122,
+          "raise": 188
         }
       },
       "Link": {
-        "left": {},
+        "left": {
+          "offset_x": 78,
+          "scale": 0.76,
+          "raise": 173
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.88,
+          "offset_x": 44,
+          "raise": 148
         }
       },
       "Luigi": {
-        "left": {},
+        "left": {
+          "offset_x": 89,
+          "scale": 0.68,
+          "raise": 196
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.74,
+          "offset_x": -111,
+          "raise": 148
         }
       },
       "Mario": {
-        "left": {},
+        "left": {
+          "offset_x": 130,
+          "scale": 0.71,
+          "raise": 176
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.74,
+          "offset_x": -161,
+          "raise": 158
         }
       },
       "Marth": {
-        "left": {},
+        "left": {
+          "offset_x": -13,
+          "scale": 0.83,
+          "raise": 153
+        },
         "right": {
-          "scale": 0.85,
-          "offset_x": 70,
-          "offset_y": -170
+          "scale": 0.81,
+          "offset_x": 15,
+          "raise": 179
         }
       },
       "Mewtwo": {
-        "left": {},
+        "left": {
+          "offset_x": 108,
+          "scale": 0.85,
+          "raise": 151
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.84,
+          "offset_x": -122,
+          "raise": 177
         }
       },
       "Mr Game & Watch": {
-        "left": {},
+        "left": {
+          "offset_x": 58,
+          "scale": 0.72,
+          "raise": 168
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.72,
+          "offset_x": -43,
+          "raise": 188
         }
       },
       "Ness": {
-        "left": {},
+        "left": {
+          "offset_x": 127,
+          "scale": 0.56,
+          "raise": 197
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.62,
+          "offset_x": -123,
+          "raise": 180
         }
       },
       "Peach": {
-        "left": {},
+        "left": {
+          "offset_x": 192,
+          "scale": 0.9,
+          "raise": 132
+        },
         "right": {
           "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "offset_x": -215,
+          "raise": 169
         }
       },
       "Pichu": {
-        "left": {},
+        "left": {
+          "offset_x": 137,
+          "scale": 0.54,
+          "raise": 192
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.65,
+          "offset_x": -191,
+          "raise": 187
         }
       },
       "Pikachu": {
-        "left": {},
+        "left": {
+          "offset_x": 55,
+          "scale": 0.55,
+          "raise": 212
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.68,
+          "offset_x": -154,
+          "raise": 216
         }
       },
       "Roy": {
-        "left": {},
-        "right": {
+        "left": {
+          "offset_x": 97,
           "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "raise": 171
+        },
+        "right": {
+          "scale": 0.84,
+          "offset_x": -105,
+          "raise": 185
         }
       },
       "Samus": {
-        "left": {},
+        "left": {
+          "offset_x": 137,
+          "scale": 0.89,
+          "raise": 137
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.82,
+          "offset_x": -153,
+          "raise": 136
         }
       },
       "Sheik": {
-        "left": {},
+        "left": {
+          "offset_x": 153,
+          "scale": 0.75,
+          "raise": 168
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.82,
+          "offset_x": -155,
+          "raise": 125
         }
       },
       "Yoshi": {
-        "left": {},
+        "left": {
+          "offset_x": 74,
+          "scale": 0.86,
+          "raise": 128
+        },
         "right": {
           "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "offset_x": -138,
+          "raise": 156
         }
       },
       "Young Link": {
-        "left": {},
+        "left": {
+          "offset_x": 129,
+          "scale": 0.64,
+          "raise": 175
+        },
         "right": {
-          "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "scale": 0.65,
+          "offset_x": -150,
+          "raise": 186
         }
       },
       "Zelda": {
-        "left": {},
+        "left": {
+          "offset_x": 163,
+          "scale": 0.84,
+          "raise": 139
+        },
         "right": {
           "scale": 0.8,
-          "offset_x": -50,
-          "offset_y": -140
+          "offset_x": -183,
+          "raise": 153
         }
       }
     }

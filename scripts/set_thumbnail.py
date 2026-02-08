@@ -309,30 +309,34 @@ def parse_character_outline_config(payload: dict | None) -> dict:
 
 def parse_override_block(block: dict | None, allow_missing: bool = False) -> dict:
     if not isinstance(block, dict):
-        return {} if allow_missing else {"scale": 1.0, "offset_x": 0, "offset_y": 0}
-    result: dict[str, float | int] = {}
+        return {} if allow_missing else {"scale": 1.0, "offset_x": 0, "raise": 0}
+    result: dict[str, float | int | bool] = {}
     for key, default_value, caster in (
         ("scale", 1.0, float),
         ("offset_x", 0, int),
-        ("offset_y", 0, int),
+        ("raise", 0, int),
     ):
         if allow_missing and key not in block:
             continue
         result[key] = caster(block.get(key, default_value))
+    # mirror_left is legacy shorthand for use_other_side + mirror
+    if block.get("mirror_left"):
+        result["use_other_side"] = True
+        result["mirror"] = True
+    else:
+        if block.get("use_other_side"):
+            result["use_other_side"] = True
+        if block.get("mirror"):
+            result["mirror"] = True
     return result
 
 
 def merge_overrides(base: dict, extra: dict) -> dict:
     merged = dict(base)
-    for key in ("scale", "offset_x", "offset_y"):
+    for key in ("scale", "offset_x", "raise", "mirror", "use_other_side"):
         if key in extra:
             merged[key] = extra[key]
     return merged
-
-
-def apply_center_offset(offset_x: int, side: str) -> int:
-    # Positive values move away from center; right side keeps sign, left flips.
-    return offset_x if side.lower() == "right" else -offset_x
 
 
 def load_json_file(path: Path) -> dict:
@@ -375,7 +379,7 @@ def resolve_event_config(root: Path, main_config: dict) -> tuple[Path, dict]:
 
 
 def load_character_overrides_data(payload: dict | None) -> dict:
-    defaults = {"scale": 1.0, "offset_x": 0, "offset_y": 0}
+    defaults = {"scale": 1.0, "offset_x": 0, "raise": 0}
     overrides = {"defaults": defaults, "characters": {}}
     if payload is None:
         return overrides
@@ -409,21 +413,14 @@ def resolve_character_override(overrides: dict, character: str, side: str) -> di
     merged = dict(overrides["defaults"])
     entry = overrides["characters"].get(normalize_token(character))
     if not entry:
-        merged["offset_x"] = apply_center_offset(int(merged.get("offset_x", 0)), side)
         return merged
 
     merged = merge_overrides(merged, entry.get("base", {}))
-    offset_x = int(merged.get("offset_x", 0))
     if side.lower() == "left":
         side_block = entry.get("left", {})
     else:
         side_block = entry.get("right", {})
     merged = merge_overrides(merged, side_block)
-    if "offset_x" in side_block:
-        offset_x = int(merged.get("offset_x", 0))
-    else:
-        offset_x = apply_center_offset(offset_x, side)
-    merged["offset_x"] = offset_x
     return merged
 
 
@@ -435,7 +432,8 @@ def apply_character_override(
 ) -> tuple[Image.Image, int, int]:
     scale = float(override.get("scale", 1.0))
     offset_x = scale_value(int(override.get("offset_x", 0)), scale_x)
-    offset_y = scale_value(int(override.get("offset_y", 0)), scale_y)
+    raise_val = int(override.get("raise", 0))
+    offset_y = scale_value(-raise_val, scale_y)
     if scale != 1.0:
         new_size = (
             max(1, int(round(image.width * scale))),
@@ -1084,21 +1082,33 @@ def main(argv: list[str] | None = None) -> int:
         print(f"error: character set directory missing: {character_root}", file=sys.stderr)
         return 1
 
+    p1_override = resolve_character_override(overrides, args.p1_character, "Left")
+    p2_override = resolve_character_override(overrides, args.p2_character, "Right")
+
     try:
+        p1_side = "Left"
+        p1_use_other = bool(p1_override.get("use_other_side"))
+        p1_do_mirror = bool(p1_override.get("mirror"))
+        p1_load_side = "Right" if p1_use_other else p1_side
         p1_image_path, p1_mirror, _p1_color_used = resolve_character_image(
             character_root,
             args.p1_character,
             args.p1_color,
-            "Left",
+            p1_load_side,
             args.character_set,
             character_max_width,
             character_max_height,
         )
+
+        p2_side = "Right"
+        p2_use_other = bool(p2_override.get("use_other_side"))
+        p2_do_mirror = bool(p2_override.get("mirror"))
+        p2_load_side = "Left" if p2_use_other else p2_side
         p2_image_path, p2_mirror, _p2_color_used = resolve_character_image(
             character_root,
             args.p2_character,
             args.p2_color,
-            "Right",
+            p2_load_side,
             args.character_set,
             character_max_width,
             character_max_height,
@@ -1108,17 +1118,19 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     p1_image = load_character_image(p1_image_path, p1_mirror)
+    if p1_do_mirror:
+        p1_image = p1_image.transpose(Image.FLIP_LEFT_RIGHT)
     p1_image = crop_transparent(p1_image)
     p1_image = scale_to_fit(p1_image, character_max_width, character_max_height)
-    p1_override = resolve_character_override(overrides, args.p1_character, "Left")
     p1_image, p1_offset_x, p1_offset_y = apply_character_override(
         p1_image, p1_override, scale_x, scale_y
     )
 
     p2_image = load_character_image(p2_image_path, p2_mirror)
+    if p2_do_mirror:
+        p2_image = p2_image.transpose(Image.FLIP_LEFT_RIGHT)
     p2_image = crop_transparent(p2_image)
     p2_image = scale_to_fit(p2_image, character_max_width, character_max_height)
-    p2_override = resolve_character_override(overrides, args.p2_character, "Right")
     p2_image, p2_offset_x, p2_offset_y = apply_character_override(
         p2_image, p2_override, scale_x, scale_y
     )

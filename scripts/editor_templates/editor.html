@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Position Editor</title>
+  <link rel="stylesheet" href="/static/editor.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="header-left">
+        <span id="page-title">Loading...</span>
+        <span id="page-index" class="muted"></span>
+        <span id="dirty-indicator" class="dirty hidden">unsaved</span>
+      </div>
+      <div class="header-right">
+        <button id="btn-save" title="Ctrl+S">Save</button>
+        <button id="btn-reset">Reset</button>
+      </div>
+    </header>
+
+    <div class="help-bar">
+      <kbd>Z</kbd> prev &nbsp;|&nbsp; <kbd>X</kbd> next &nbsp;|&nbsp;
+      Drag = move &nbsp;|&nbsp; Scroll = resize &nbsp;|&nbsp;
+      <kbd>C</kbd> smaller &nbsp;|&nbsp; <kbd>V</kbd> bigger &nbsp;|&nbsp;
+      <kbd>S</kbd> save &nbsp;|&nbsp; <kbd>R</kbd> reset
+    </div>
+
+    <div id="main-area">
+      <div id="preview-container">
+        <img id="preview" draggable="false" alt="Thumbnail preview">
+        <div id="loading-overlay" class="hidden">Rendering...</div>
+      </div>
+      <div id="sidebar">
+        <div class="sidebar-section">
+          <label class="toggle-label">
+            <input type="checkbox" id="chk-flip">
+            <span>Flip image</span>
+          </label>
+          <div class="toggle-hint">Mirror horizontally</div>
+        </div>
+        <div class="sidebar-section">
+          <label class="toggle-label">
+            <input type="checkbox" id="chk-use-other">
+            <span>Use other side</span>
+          </label>
+          <div class="toggle-hint">Swap in the opposite side's image</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span class="value">scale: <strong id="val-scale">—</strong></span>
+      <span class="value">offset_x: <strong id="val-offset-x">—</strong></span>
+      <span class="value">raise: <strong id="val-raise">—</strong></span>
+    </footer>
+  </div>
+
+  <script src="/static/editor.js"></script>
+</body>
+</html>
